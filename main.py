@@ -186,7 +186,9 @@ def main():
             lst_sep = lst_string.split(' ')
             for nr in lst_sep:
                 lst3.append(int(nr))
-
+            lst4=oglindire(lst1,lst3)
+            lst5=oglindire(lst2,lst3)
+            print(lst4)
 
 
 test_nr_pare()
