@@ -103,9 +103,34 @@ def verif_lista(lst):
 def test_concatenare():
     assert concatenare([12, 22, 36, 11],[21, 23, 63, 55, 424])==[1221,2223,3663,1155]
 
+
 def test_verif_lista():
     assert verif_lista([1221,2223,3663,1155])==[1221,3663]
-    assert verif_lista([2223,1155]==[]
+    assert verif_lista([2223,1155])==[]
+
+
+def divizibil_k(lst,k):
+    for element in lst:
+        if element % k ==0:
+            return True
+    return False
+
+
+def oglindit(n):
+    x = n
+    p = 0
+    while x:
+        p = p * 10 + x % 10
+        x = x // 10
+    return p
+
+def divizibila_cu_lista(lst1,lst3):
+    for element in lst3:
+            if divizibil_k(lst1,element)==0:
+                return False
+    return True
+
+
 def main():
     lst1 = []
     lst2=[]
@@ -114,8 +139,7 @@ def main():
         print("2. Afisarea daca cele doua multimi au acelasi numar de elemente pare")
         print("3. Afisarea intersectiei celor doua multimi")
         print("4. Afisarea tuturor palindroamelor obtinute prin concatenarea elementelor din cele doua liste aflate pe aceleasi pozitii")
-        print("5. Afisarea listei obtinute prin inversarea ca string a floaturilor cu "
-              "partea intreaga a radicalului nr prim ")
+        print("5. Afisarea listei oglindite pentru care toate elementele multimii c divid multimile a si b ")
         print("x. Pentru a iesi din program")
         optiune = input("Alegeti optiunea dorita:")
         if optiune == '1':
@@ -148,8 +172,16 @@ def main():
                 print(lst4)
             else:
                 print("nu exista elemente palindrom obtinute")
+        elif optiune =='5':
+            lst3=[]
+            lst_string = input("dati numerele separate prin spatiu a primei multimi:")
+            lst_sep = lst_string.split(' ')
+            for nr in lst_sep:
+                lst3.append(int(nr))
+
 
 test_nr_pare()
 test_intersectie()
 test_concatenare()
+test_verif_lista()
 main()
