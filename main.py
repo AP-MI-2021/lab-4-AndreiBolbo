@@ -1,5 +1,7 @@
 import math
-from math import sqrt,trunc
+from math import sqrt, trunc
+
+
 def nr_pare(lst):
     """
     functia determina numarul de elemente pare dintr o lista
@@ -38,7 +40,7 @@ def intersectia(lst1,lst2):
     :param lst2:
     :return:lst3 (lista intersectiei)
     """
-    lst3=[]
+    lst3 = []
     for element in lst1:
          if element in lst2 and element not in lst3:
              lst3.append(element)
@@ -50,6 +52,60 @@ def test_intersectie():
     assert intersectia([1, 2, 3, 4], [2, 2, 4, 1]) == [1, 2, 4]
     assert intersectia([1, 2, 3, 4], [5, 6, 7, 8]) == []
 
+def palindrom(n):
+    """
+    construieste oglinditul numarului urmand sa il verifice cu valoarea initiala iar astfel verifica daca e palindrom
+    :param n:
+    :return: True/False
+    """
+    x=n
+    p=0
+    while x:
+        p=p*10+x%10
+        x=x//10
+    if p==n:
+        return True
+    return False
+
+
+def concatenare(lst1,lst2):
+    """
+    concateneaza elementele de pe aceleasi pozitii din sir
+    :param lst1:
+    :param lst2:
+    :return: lst3 (lista concatenata)
+    """
+    lst3=[]
+    if len(lst1)<=len(lst2):
+        n=len(lst1)
+    else:
+        n=len(lst2)
+    for i in range(n):
+        v=str(lst1[i])
+        c=str(lst2[i])
+        t=v+c
+        lst3.append(int(t))
+    return lst3
+
+
+def verif_lista(lst):
+    """
+    verifica elementele din lista care sunt palindrom punandu-le intr-o noua lista
+    :param lst:
+    :return: lst4 (lista tuturor palindroamelor)
+    """
+    lst4=[]
+    for element in lst:
+        if palindrom(element):
+            lst4.append(element)
+    return lst4
+
+def test_concatenare():
+    assert concatenare([12, 22, 36, 11],[21, 23, 63, 55, 424])==[1221,2223,3663,1155]
+
+def test_verif_lista():
+    assert verif_lista([1221,2223,3663,1155])==[1221,3663]
+    assert verif_lista([2223,1155]==[]
 def main():
     lst1 = []
     lst2=[]
@@ -57,7 +113,7 @@ def main():
         print("1. Citire a celor doua multimi intregi")
         print("2. Afisarea daca cele doua multimi au acelasi numar de elemente pare")
         print("3. Afisarea intersectiei celor doua multimi")
-        print("4. Afisarea numerelor cu partea fractionara palindrom")
+        print("4. Afisarea tuturor palindroamelor obtinute prin concatenarea elementelor din cele doua liste aflate pe aceleasi pozitii")
         print("5. Afisarea listei obtinute prin inversarea ca string a floaturilor cu "
               "partea intreaga a radicalului nr prim ")
         print("x. Pentru a iesi din program")
@@ -85,7 +141,15 @@ def main():
                 print(lst3)
             else:
                 print("nu exista elemente in intersectie")
+        elif optiune == '4':
+            lst3=concatenare(lst1,lst2)
+            lst4=verif_lista(lst3)
+            if len(lst3):
+                print(lst4)
+            else:
+                print("nu exista elemente palindrom obtinute")
 
 test_nr_pare()
 test_intersectie()
+test_concatenare()
 main()
