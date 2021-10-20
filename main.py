@@ -131,6 +131,14 @@ def divizibila_cu_lista(lst1,lst3):
     return True
 
 
+def oglindire(lst1,lst3):
+    lst4=[]
+    if divizibila_cu_lista(lst1,lst3):
+        for element in lst1:
+            lst4.append(oglindit(element))
+    else:
+        lst4=lst1
+
 def main():
     lst1 = []
     lst2=[]
@@ -178,6 +186,7 @@ def main():
             lst_sep = lst_string.split(' ')
             for nr in lst_sep:
                 lst3.append(int(nr))
+
 
 
 test_nr_pare()
