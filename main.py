@@ -189,7 +189,7 @@ def main():
             lst4=oglindire(lst1,lst3)
             lst5=oglindire(lst2,lst3)
             print(lst4)
-
+            print(lst5)
 
 test_nr_pare()
 test_intersectie()
